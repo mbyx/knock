@@ -23,6 +23,6 @@ from knock.depict.engine import Engine
 from knock.depict.input import Key, Keyboard, Mouse, MouseButton
 from knock.depict.misc import Event, Font, Image, Time
 from knock.depict.scene import Scene
-from knock.depict.vec3d import Point, Size, Vec2, Vec3D, deg2rad, rad2deg
+from knock.depict.vec3d import Point, Size, Vec2, Vec3D, deg2rad, rad2deg, map
 from knock.depict.window import Window
 from knock.depict.signal import Signal, SignalCallback

@@ -164,6 +164,18 @@ files = [
 ]
 
 [[package]]
+name = "perlin-noise"
+version = "1.12"
+description = "Python implementation for Perlin Noise with unlimited coordinates space"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "perlin_noise-1.12-py3-none-any.whl", hash = "sha256:7c65b6671ce06d93cf467e2b59041878e3d5dc40208a8c089de581d3f9d47701"},
+    {file = "perlin_noise-1.12.tar.gz", hash = "sha256:01ec42d9f2bc338ae52edbb069b375fb83fec51784e17479366ced1f7063957c"},
+]
+
+[[package]]
 name = "pluggy"
 version = "1.0.0"
 description = "plugin and hook calling mechanisms for python"
@@ -355,4 +367,4 @@ tqdm = "*"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "e827d049e22f2f125a15101f79e3ccedbe1df3a34d47122c9dbca0cb313408aa"
+content-hash = "75c847576b8aab3589cbe3816c1dacaa8d8a5d84253129f600c6fa91c96c2f8e"

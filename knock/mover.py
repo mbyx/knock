@@ -39,6 +39,7 @@ class Mover(Circle2D):
 
     angular_velocity: float = 0.0
     angular_acceleration: float = 0.0
+    draw_: bool = True
 
     @property
     def mass(self) -> float:
@@ -63,18 +64,7 @@ class Mover(Circle2D):
             * self.velocity.normalize()
         )
 
-    def tick(self, delta: float, engine: Engine) -> None:
-        self.obey_gravity()
-        self.obey_friction()
-
-        self.velocity += self.acceleration
-        self.position += self.velocity
-        self.acceleration = Vec2.origin()
-
-        self.angular_velocity += self.angular_acceleration
-        self.rotation += self.angular_velocity
-        self.angular_velocity *= 1 - self.friction
-
+    def bounce(self, engine: Engine) -> None:
         # Constrain the ball to be within the screen.
         self.position = self.position.constrain(
             Vec2[float](self.radius, self.radius),
@@ -87,3 +77,30 @@ class Mover(Circle2D):
 
         if self.position.y in (engine.height - self.radius, self.radius):
             self.velocity.y *= -1
+
+    def wraparound(self, engine: Engine) -> None:
+        if self.position.x > engine.width:
+            self.position.x = 0
+        if self.position.x < 0:
+            self.position.x = engine.width
+        if self.position.y > engine.height:
+            self.position.y = 0
+        if self.position.y < 0:
+            self.position.y = engine.height
+
+    def draw(self, canvas: Canvas) -> None:
+        if self.draw_:
+            return super().draw(canvas)
+
+    def tick(self, delta: float, engine: Engine) -> None:
+        # self.obey_gravity()
+        # self.obey_friction()
+        self.bounce(engine)
+
+        self.velocity += self.acceleration
+        self.position += self.velocity
+        self.acceleration = Vec2.origin()
+
+        self.angular_velocity += self.angular_acceleration
+        self.rotation += self.angular_velocity
+        self.angular_velocity *= 1 - self.friction

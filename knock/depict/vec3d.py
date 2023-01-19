@@ -10,6 +10,10 @@ from attrs import define
 T = TypeVar("T", float, int)
 
 
+def map(n: T, old_min: T, old_max: T, new_min: T, new_max: T) -> float:
+    return (n / (old_max - old_min)) * (new_max - new_min)
+
+
 def deg2rad(degrees: float) -> float:
     """Convert an angle from degrees to radians."""
     return degrees * math.pi / 180
@@ -40,6 +44,10 @@ class Vec3D(Generic[T]):
     def origin() -> Vec3D[float]:
         """The vector pointing towards the origin, i.e `(0, 0, 0)`."""
         return Vec3D(0.0, 0.0, 0.0)
+
+    def angle_between(self, other: Vec3D) -> float:
+        """Calculate the angle between two vectors in radians."""
+        return math.acos(self.dot(other) / (self.size() * other.size()))
 
     def rotate(self, degrees: float, around: Point) -> Vec3D[float]:
         """Rotate the vector around `around` by `degrees` in degrees."""
@@ -117,6 +125,9 @@ class Vec3D(Generic[T]):
     def __truediv__(self, other: T) -> Vec3D[float]:
         """Divide the components of the vector by a scalar value."""
         return Vec3D(self.x / other, self.y / other, self.z / other)
+
+    def __floordiv__(self, other: T) -> Vec3D[int]:
+        return (self / other).map(math.floor)
 
     def __mul__(self, other: T) -> Vec3D[T]:
         """Multiply the components of the vector by a scalar value."""
