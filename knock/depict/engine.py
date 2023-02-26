@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 from collections import defaultdict
 
 """The main innards of depict."""
@@ -8,16 +9,16 @@ from typing import Type, TypeAlias
 import pygame
 import pygame_gui as pgui
 import vidmaker
-from attrs import astuple, define, Factory
+from attrs import Factory, astuple, define
 
 import knock.depict.color as color
 from knock.depict.canvas import Canvas
 from knock.depict.color import Color
 from knock.depict.misc import Event
 from knock.depict.scene import Scene
+from knock.depict.signal import Signal, SignalCallback
 from knock.depict.vec3d import Size
 from knock.depict.window import Window
-from knock.depict.signal import Signal, SignalCallback
 
 MANAGER: pgui.UIManager = pgui.UIManager((320, 240))
 Clock: TypeAlias = pygame.time.Clock
@@ -31,14 +32,14 @@ class Engine:
 
     - size: The width and height of the window.
     - title: The title of the window.
-    - background: The background color of the window. This is
-    filled every tick if `clear` is True.
+    - background: The background color of the window. This is filled every
+        tick if `clear` is True.
     - frame_rate: The number of ticks per second.
     - root: The root scene that is drawn to the window.
     - screen: A reference to the window that is created.
     - frame_count: The number of frames that have passed since depict started.
     - record: Whether to record the window or not. This has to be set when
-    depict is first run. All subsequent changes will be ignored.
+        depict is first run. All subsequent changes will be ignored.
     - clear: Whether to clear the window every tick or not."""
 
     size: Size

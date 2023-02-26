@@ -1,11 +1,15 @@
 from __future__ import annotations
 
+import math
+import random
+
+from attrs import Factory, define
 from depict import *
-from attrs import define, Factory
 from perlin_noise import PerlinNoise
-import random, math
 
 noise: PerlinNoise = PerlinNoise()
+
+# TODO: Refactor, it is very buggy.
 
 
 @define
@@ -31,12 +35,10 @@ class FlowField(Scene):
                 canvas.line(
                     start,
                     start + (start + velocity).normalize() * 5,
-                    color.White,
+                    White,
                     width=1,
                 )
-                canvas.circle(
-                    start + (start + velocity).normalize() * 5, 2.0, color.Red
-                )
+                canvas.circle(start + (start + velocity).normalize() * 5, 2.0, Red)
 
     def random(self) -> FlowField:
         """Create a random flow field with Perlin Noise."""
@@ -44,13 +46,13 @@ class FlowField(Scene):
         dx = dy = random.randrange(10, 100)
         for row in range(self.rows):
             for col in range(self.cols):
-                theta: float = map(noise([dx, dy]), 0, 1, 0, math.tau)
+                theta: float = utils.map(noise([dx, dy]), 0, 1, 0, math.tau)
                 self.field[row][col] = Vec3D(math.cos(theta), math.sin(theta))
                 dy += 0.01
             dx += 0.01
         return self
 
-    def at(self, pos: Point[int]) -> Vec3D:
+    def at(self, pos: Point) -> Vec3D:
         """Lookup the velocity vector stored at a certain position."""
         size = (pos // self.resolution).constrain(
             Vec3D.origin().map(int), Vec3D(self.rows - 1, self.cols - 1)

@@ -3,7 +3,7 @@ from enum import IntFlag
 from functools import reduce
 
 import pygame
-from attrs import astuple, define
+from attrs import define
 
 from knock.depict.vec3d import Size
 

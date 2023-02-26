@@ -1,23 +1,30 @@
-from attrs import define
+"""A viscous liquid that applies a drag force on objects."""
 
-from depict import *
 from typing import cast
+
+from attrs import define
+from depict import *
+
 from knock.mover import Mover
 
 
 @define
 class Liquid(Rect2D):
+    """A viscous liquid that applies a drag force on objects."""
+
     # Cover half the screen.
-    position: Point = Point[int](0, 180)
+    position: Point = Point(0, 180)
     size: Size = Size(640, 180)
 
     drag: float = 0.15
 
-    def inside_area(self, emitter: Area2D, body: Node2D) -> None:
+    def body_in_area(self, emitter: Area2D, body: Node2D) -> None:
+        """Called whenever a body is inside the liquid."""
         if isinstance(body, Mover):
-            body.add_force(
+            drag: Vec3D = (
                 -1 * (body.velocity.size() ** 2) * self.drag * body.velocity.normalize()
             )
+            body.add_force(drag)
 
     def build(self) -> list[Scene]:
         return [
@@ -31,4 +38,4 @@ class Liquid(Rect2D):
 
     def ready(self, engine: Engine) -> None:
         detector: Area2D = cast(Area2D, self.get_node("Detector"))
-        engine.connect(self.inside_area, detector, BodyInArea)
+        engine.connect(self.body_in_area, detector, BodyInArea)

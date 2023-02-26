@@ -35,10 +35,10 @@ class Canvas:
 
     def polygon(self, points: list[Point], color: Color) -> None:
         """Create a polygon from a list of `points` with a color."""
-        min_point = Point[int](
+        min_point = Point(
             min(map(lambda p: p.x, points)), min(map(lambda p: p.y, points))
         )
-        max_point = Point[int](
+        max_point = Point(
             max(map(lambda p: p.x, points)), max(map(lambda p: p.y, points))
         )
         surface = pygame.Surface(max_point.abs_diff(min_point).as_2d(), pygame.SRCALPHA)

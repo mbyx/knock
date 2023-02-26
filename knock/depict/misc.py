@@ -10,6 +10,8 @@ import pygame
 if TYPE_CHECKING:
     from depict.color import Color
 
+# TODO: Make Image and Font compatible with the Canvas API.
+
 
 class Image:
     """Methods for loading and saving an image as a `pygame.surface.Surface`."""
@@ -47,6 +49,7 @@ class Time:
 class Font(Enum):
     """Render and load fonts."""
 
+    # TODO: Add more fonts.
     Monospace = pygame.font.SysFont("monospace", 14)
 
     @staticmethod

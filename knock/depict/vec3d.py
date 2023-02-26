@@ -4,24 +4,11 @@ from __future__ import annotations
 
 import math
 from typing import Callable, Generic, TypeAlias, TypeVar, cast
+import knock.depict.utils as utils
 
 from attrs import define
 
 T = TypeVar("T", float, int)
-
-
-def map(n: T, old_min: T, old_max: T, new_min: T, new_max: T) -> float:
-    return (n / (old_max - old_min)) * (new_max - new_min)
-
-
-def deg2rad(degrees: float) -> float:
-    """Convert an angle from degrees to radians."""
-    return degrees * math.pi / 180
-
-
-def rad2deg(radians: float) -> float:
-    """Convert an angle from radians to degrees."""
-    return radians * 180 / math.pi
 
 
 @define
@@ -47,16 +34,20 @@ class Vec3D(Generic[T]):
 
     def angle_between(self, other: Vec3D) -> float:
         """Calculate the angle between two vectors in radians."""
-        return math.acos(self.dot(other) / (self.size() * other.size()))
+        return math.acos(self.dot(other) / ((self.size_sq() * other.size_sq()) ** 0.5))
+
+    def is_close(self, other: Vec3D) -> bool:
+        """Determine whether two vectors are close in value."""
+        return math.isclose(self.x, other.x) and math.isclose(self.x, other.x)
 
     def rotate(self, degrees: float, around: Point) -> Vec3D[float]:
         """Rotate the vector around `around` by `degrees` in degrees."""
-        theta: float = deg2rad(degrees) % math.tau
+        theta: float = utils.deg2rad(degrees) % math.tau
         radius: float = (self - around).size()
         position: Vec3D[float] = cast(Vec3D[float], (self - around).normalize())
         x: float = position.dot(Vec3D(math.cos(theta), -1 * math.sin(theta)))
         y: float = position.dot(Vec3D(math.sin(theta), math.cos(theta)))
-        return around + Point[float](x, y) * radius
+        return around + Point(x, y) * radius
 
     def map(self, func: Callable[[T], T]) -> Vec3D:
         """Map each of the components of a vector with some function."""
@@ -78,6 +69,13 @@ class Vec3D(Generic[T]):
     def size(self) -> T:
         """Calculate the magnitude of a vector."""
         return (self.x**2 + self.y**2 + self.z**2) ** 0.5
+
+    def size_sq(self) -> T:
+        """Calculate the magnitude squared of a vector.
+
+        This method is supposed to be used to minimize the number of square root
+        operations, as they are very slow."""
+        return self.x**2 + self.y**2 + self.z**2
 
     def normalize(self) -> Vec3D[T]:
         """Calculate the unit vector that points in the same direction as the vector."""
@@ -139,9 +137,9 @@ class Vec3D(Generic[T]):
 
 
 # A 2D Vector is just a 3D Vector with the z-component set to 0.0.
-Vec2: TypeAlias = Vec3D[T]
+Vec2D: TypeAlias = Vec3D
 # A point in 2D/3D space can be represented as a vector.
-Point: TypeAlias = Vec3D[T]
+Point: TypeAlias = Vec3D
 
 
 class Size(Vec3D[int]):
