@@ -15,9 +15,6 @@ from knock.mover import Mover
 # TODO: Test whether the refactored simulations work.
 
 
-ENGAGED: bool = False
-
-
 @define
 class Ball(Mover):
     """A round, colorful ball."""
