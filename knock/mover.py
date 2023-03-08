@@ -8,7 +8,7 @@ from attrs import define
 from depict import *
 
 
-def random_mover(seed: int) -> Mover:
+def random_mover(seed: int, wind: bool = False) -> Mover:
     """Create a Mover with randomized properties."""
     mover = Mover()
     # Movers should be center-ish and spaced out.
@@ -16,7 +16,8 @@ def random_mover(seed: int) -> Mover:
     mover.mass = random.randrange(1, 8)
     # Wind of varying force either to the left or right.
     # Note: This force is only added for one timestep.
-    mover.add_force(Vec2D(random.uniform(-2, 2), 0))
+    if wind is True:
+        mover.add_force(Vec2D(random.uniform(-2, 2), 0))
     # Randomize color for sex appeal.
     mover.color = Color.random()
     return mover

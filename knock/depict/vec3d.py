@@ -4,9 +4,10 @@ from __future__ import annotations
 
 import math
 from typing import Callable, Generic, TypeAlias, TypeVar, cast
-import knock.depict.utils as utils
 
 from attrs import define
+
+import knock.depict.utils as utils
 
 T = TypeVar("T", float, int)
 

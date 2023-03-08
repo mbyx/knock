@@ -2,11 +2,11 @@ from __future__ import annotations
 
 """Bright shiny colors."""
 
+import colorsys
 import random
 
 import pygame
 from attrs import define
-import colorsys
 
 
 @define

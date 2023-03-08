@@ -1,7 +1,9 @@
+from knock.depict.nodes.area2d import (Area2D, BodyInArea, OnBodyEntered,
+                                       OnBodyExited)
+from knock.depict.nodes.gui import Button, Label
 from knock.depict.nodes.node2d import Node2D
-from knock.depict.nodes.shapes import Point2D, Line2D, Circle2D, Rect2D, Polygon2D
-from knock.depict.nodes.area2d import Area2D, BodyInArea, OnBodyEntered, OnBodyExited
-from knock.depict.nodes.gui import Label, Button
+from knock.depict.nodes.shapes import (Circle2D, Line2D, Point2D, Polygon2D,
+                                       Rect2D)
 
 __all__ = [
     "Node2D",
