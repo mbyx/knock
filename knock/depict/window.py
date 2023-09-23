@@ -5,7 +5,7 @@ from functools import reduce
 import pygame
 from attrs import define
 
-from knock.depict.vec3d import Size
+from depict.vec3d import Size
 
 
 class Flag(IntFlag):

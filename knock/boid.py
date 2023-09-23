@@ -6,9 +6,8 @@ from typing import cast
 
 from attrs import define
 from depict import *
-
-from knock.flowfield import FlowField
-from knock.mover import Mover
+from flowfield import FlowField
+from mover import Mover
 
 
 @define
@@ -19,7 +18,7 @@ class Boid(Polygon2D):
     position: Point = Point(320, 180)
 
     # The angle that the triangle is initially at.
-    rotation: float = utils.deg2rad(270.0)
+    rotation_: float = utils.deg2rad(270.0)
     last_position: Vec3D = Vec3D.origin()
 
     # The rest of the properties are defined in ready() as they depend on position.
@@ -31,7 +30,7 @@ class Boid(Polygon2D):
 
     def ready(self, engine: Engine) -> None:
         # The point about which to rotate the triangle.
-        self.offset: Point = self.position
+        self.pivot: Point = self.position
         # The vertices of a triangle.
         self.lines: list[Point] = [
             self.position + Point(0, -6 * 2),
@@ -51,9 +50,9 @@ class Boid(Polygon2D):
         # Reset each line to origin then add the new position.
         self.lines = [((line - last_position + position)) for line in self.lines]
 
-        # Save the new position and set the offset to be at that position.
+        # Save the new position and set the pivot to be at that position.
         self.position = position
-        self.offset = position
+        self.pivot = position
 
         return position
 
@@ -91,4 +90,4 @@ class Boid(Polygon2D):
         # Rotate the boid to point towards the direction it's moving.
         # velocity.angle_2d() is used instead of look_at(target)
         # so that boid doesn't instantly turn towards target.
-        self.rotation = utils.rad2deg(mover.velocity.angle_2d())
+        self.rotation_ = utils.rad2deg(mover.velocity.angle_2d())

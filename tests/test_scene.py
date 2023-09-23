@@ -1,4 +1,4 @@
-from knock.depict.scene import Scene
+from depict.scene import Scene
 
 
 def test_scene_init() -> None:

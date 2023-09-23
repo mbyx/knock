@@ -34,7 +34,7 @@ class Mover(Circle2D):
 
     # Whenever mass is changed, the radius changes to reflect it visually.
     _mass: float = 1.0
-    radius: float = (_mass**0.5) * 10
+    radius: float = (_mass ** 0.5) * 10
 
     friction: float = 0.02
     normal: Vec2D = Vec2D(0, 1)
@@ -55,7 +55,7 @@ class Mover(Circle2D):
     @mass.setter
     def mass(self, mass: float) -> None:
         self._mass = mass
-        self.radius = (mass**0.5) * 10
+        self.radius = (mass ** 0.5) * 10
 
     def add_force(self, force: Vec2D) -> None:
         """Add a force to the Mover, using `F = ma`."""

@@ -11,14 +11,14 @@ import pygame_gui as pgui
 import vidmaker
 from attrs import Factory, astuple, define
 
-import knock.depict.color as color
-from knock.depict.canvas import Canvas
-from knock.depict.color import Color
-from knock.depict.misc import Event
-from knock.depict.scene import Scene
-from knock.depict.signal import Signal, SignalCallback
-from knock.depict.vec3d import Size
-from knock.depict.window import Window
+import depict.color as color
+from depict.canvas import Canvas
+from depict.color import Color
+from depict.misc import Event
+from depict.scene import Scene
+from depict.signal import Signal, SignalCallback
+from depict.vec3d import Size
+from depict.window import Window
 
 MANAGER: pgui.UIManager = pgui.UIManager((320, 240))
 Clock: TypeAlias = pygame.time.Clock

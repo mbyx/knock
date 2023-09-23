@@ -7,7 +7,7 @@ from typing import Callable, Generic, TypeAlias, TypeVar, cast
 
 from attrs import define
 
-import knock.depict.utils as utils
+import depict.utils as utils
 
 T = TypeVar("T", float, int)
 
@@ -69,14 +69,14 @@ class Vec3D(Generic[T]):
 
     def size(self) -> T:
         """Calculate the magnitude of a vector."""
-        return (self.x**2 + self.y**2 + self.z**2) ** 0.5
+        return (self.x ** 2 + self.y ** 2 + self.z ** 2) ** 0.5
 
     def size_sq(self) -> T:
         """Calculate the magnitude squared of a vector.
 
         This method is supposed to be used to minimize the number of square root
         operations, as they are very slow."""
-        return self.x**2 + self.y**2 + self.z**2
+        return self.x ** 2 + self.y ** 2 + self.z ** 2
 
     def normalize(self) -> Vec3D[T]:
         """Calculate the unit vector that points in the same direction as the vector."""

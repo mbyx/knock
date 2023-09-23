@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "knock"
-version = "0.1.0"
-description = "Nature of Code examples, written with depict."
+version = "1.0.0"
+description = "Simulations of anything and everything interesting."
 authors = ["Em Dash <mbyx.dev@gmail.com>"]
 
 [tool.poetry.dependencies]

@@ -2,10 +2,10 @@ from __future__ import annotations
 
 from attrs import Factory, define
 
-from knock.depict.engine import Engine
-from knock.depict.nodes import Node2D
-from knock.depict.signal import Signal
-from knock.depict.vec3d import Point, Size
+from depict.engine import Engine
+from depict.nodes import Node2D
+from depict.signal import Signal
+from depict.vec3d import Point, Size
 
 
 @define

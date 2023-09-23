@@ -7,7 +7,7 @@ from enum import Enum
 import pygame
 from attrs import astuple
 
-from knock.depict.vec3d import Point
+from depict.vec3d import Point
 
 
 class MouseButton(Enum):

@@ -2,8 +2,7 @@
 
 from attrs import define
 from depict import *
-
-from knock.mover import Mover
+from mover import Mover
 
 
 @define

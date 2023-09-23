@@ -2,9 +2,9 @@ from __future__ import annotations
 
 from attrs import Factory, define
 
-import knock.depict.utils as utils
-from knock.depict.scene import Scene
-from knock.depict.vec3d import Vec3D
+import depict.utils as utils
+from depict.scene import Scene
+from depict.vec3d import Vec3D
 
 
 @define

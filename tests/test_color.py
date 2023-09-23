@@ -1,7 +1,6 @@
+import depict.color as color
 import pygame
-
-import knock.depict.color as color
-from knock.depict.color import Color
+from depict.color import Color
 
 
 def test_rgb() -> None:

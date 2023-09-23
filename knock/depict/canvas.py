@@ -5,8 +5,8 @@ from __future__ import annotations
 import pygame
 from attrs import define
 
-from knock.depict.color import Color
-from knock.depict.vec3d import Point, Size
+from depict.color import Color
+from depict.vec3d import Point, Size
 
 
 @define

@@ -4,11 +4,11 @@ from typing import TYPE_CHECKING
 
 from attrs import Factory, define
 
-import knock.depict.color as color
-import knock.depict.utils as utils
-from knock.depict.color import Color
-from knock.depict.nodes import Node2D
-from knock.depict.vec3d import Point, Size
+import depict.color as color
+import depict.utils as utils
+from depict.color import Color
+from depict.nodes import Node2D
+from depict.vec3d import Point, Size
 
 if TYPE_CHECKING:
     from depict.canvas import Canvas

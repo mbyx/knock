@@ -1,8 +1,7 @@
 from typing import cast
 
 from attrs import define
-
-from knock.depict import *
+from depict import *
 
 
 @define

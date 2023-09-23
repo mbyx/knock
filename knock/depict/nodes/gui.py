@@ -6,11 +6,11 @@ import pygame
 import pygame_gui as pgui
 from attrs import define
 
-import knock.depict.color as color
-from knock.depict.color import Color
-from knock.depict.engine import MANAGER
-from knock.depict.misc import Font
-from knock.depict.nodes import Node2D
+import depict.color as color
+from depict.color import Color
+from depict.engine import MANAGER
+from depict.misc import Font
+from depict.nodes import Node2D
 
 if TYPE_CHECKING:
     from depict.canvas import Canvas
