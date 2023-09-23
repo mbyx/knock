@@ -5,10 +5,11 @@ from depict import *
 
 
 @define
-class SpinningLine(Line2D):
+class Spinner(Line2D):
     """A line that spins..."""
 
     length: float = 200.0
+    width: int = 5
     offset: Point = Point(320, 180)
     start: Point = Point(offset.x - (length / 2), 180)
     end: Point = Point(offset.x + (length / 2), 180)

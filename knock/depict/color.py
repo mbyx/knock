@@ -3,12 +3,9 @@ from __future__ import annotations
 """Bright shiny colors."""
 
 import colorsys
-import contextlib
 import random
 
-with contextlib.redirect_stdout(None):
-    import pygame
-
+import pygame
 from attrs import define
 
 

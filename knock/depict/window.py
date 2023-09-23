@@ -1,17 +1,14 @@
-import contextlib
 import operator
 from enum import IntFlag
 from functools import reduce
 
-with contextlib.redirect_stdout(None):
-    import pygame
-
+import pygame
 from attrs import define
 from depict.vec3d import Size
 
 
 class Flag(IntFlag):
-    """Customize how the window will be rendered."""
+    """Customizes how the window will be rendered."""
 
     FullScreen = pygame.FULLSCREEN
     DoubleBuffer = pygame.DOUBLEBUF
@@ -26,7 +23,7 @@ class Flag(IntFlag):
 
 @define
 class Window:
-    """The main window in depict."""
+    """The main window for drawing."""
 
     surface: pygame.surface.Surface | None = None
     size: Size = Size(640, 360)

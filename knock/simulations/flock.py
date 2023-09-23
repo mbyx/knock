@@ -20,7 +20,7 @@ class Flock(Scene):
     """A flocking simulation."""
 
     # Size of the flock; very large values will run slowly.
-    size: int = 45
+    size: int = 100
     separation: int = 60
     neighbour_dist: int = 90
     weights: list[float] = [1.25, 1.5, 1.75]

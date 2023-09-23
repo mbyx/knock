@@ -1,17 +1,17 @@
-from simulations.boid import Boid  # isort: skip
+from simulations.boid import Boid
 from simulations.cantor import CantorSet
 from simulations.flock import Flock
 from simulations.flowfield import FlowField
 from simulations.fractal_tree import FractalTree
 from simulations.kochsnowflake import KochSnowflake
-from simulations.linedrawer import CursorLine
+from simulations.linedrawer import LineDrawer
 from simulations.liquid import Liquid
 from simulations.momenta import Momenta
 from simulations.mover import Mover
 from simulations.particle_emitter import Particle, ParticleEmitter
 from simulations.pendulum import Pendulum, Spring
 from simulations.planet import Planet
-from simulations.spinners import SpinningLine
+from simulations.spinners import Spinner
 from simulations.spiral import Spiral
 
 __all__ = [
@@ -21,7 +21,7 @@ __all__ = [
     "FlowField",
     "FractalTree",
     "KochSnowflake",
-    "CursorLine",
+    "LineDrawer",
     "Liquid",
     "Momenta",
     "Mover",
@@ -30,6 +30,6 @@ __all__ = [
     "Pendulum",
     "Spring",
     "Planet",
-    "SpinningLine",
+    "Spinner",
     "Spiral",
 ]

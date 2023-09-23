@@ -2,11 +2,7 @@ from __future__ import annotations
 
 """A 2D canvas for painting various geometrical shapes."""
 
-import contextlib
-
-with contextlib.redirect_stdout(None):
-    import pygame
-
+import pygame
 from attrs import define
 from depict.color import Color
 from depict.vec3d import Point, Size

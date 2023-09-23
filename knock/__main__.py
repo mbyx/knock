@@ -5,7 +5,7 @@ import simulations
 import typer
 
 # TODO: Make a manual for Depict.
-# TODO: Test whether the refactored simulations work.
+# TODO: Fix fractal_tree and flock.
 
 app = typer.Typer()
 
@@ -26,8 +26,12 @@ def run(simulation_name: str, record: bool = False, clear: bool = True):
 
 @app.command()
 def list(verbose: bool = False) -> None:
-    for i, simulation in enumerate(simulations):
-        print(f"{i + 1:02}) {simulation}")
+    if verbose:
+        for i, (simulation_name, simulation) in enumerate(simulations.items()):
+            print(f"{i + 1:02}) {simulation_name}: {simulation.__doc__}")
+    else:
+        for i, simulation in enumerate(simulations):
+            print(f"{i + 1:02}) {simulation}")
 
 
 if __name__ == "__main__":

@@ -20,7 +20,7 @@ class FractalTree(Node2D):
             return
 
         theta: float = utils.map(Mouse.get_pos().x, 0, size.width, 0, size.height)
-        self.children.append(Line2D(start=start, end=end))
+        self.children.append(Line2D(position=start, end=end))
         self.line(end, Point(end.x, end.y - length * 2 / 3).rotate(theta, end), size)
         self.line(end, Point(end.x, end.y - length * 2 / 3).rotate(-theta, end), size)
 

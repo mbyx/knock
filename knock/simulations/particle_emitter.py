@@ -57,7 +57,7 @@ class ParticleEmitter(Node2D):
     def emit(self) -> None:
         """Emit a new particle."""
         self.children.append(
-            Particle(position=self.position, decay_rate=1, color=self.color)
+            Particle(position=self.position, decay_rate=8, color=self.color)
         )
 
     def tick(self, delta: float, engine: Engine) -> None:

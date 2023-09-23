@@ -2,10 +2,9 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from attrs import Factory, define
-
 import depict.color as color
 import depict.utils as utils
+from attrs import Factory, define
 from depict.color import Color
 from depict.nodes import Node2D
 from depict.vec3d import Point, Size
@@ -46,6 +45,7 @@ class Line2D(Node2D):
     width: int = 1
 
     def draw(self, canvas: Canvas) -> None:
+        self.start = self.position
         canvas.line(self.start, self.end, self.color, self.width)
 
 

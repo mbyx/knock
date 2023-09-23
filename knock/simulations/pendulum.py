@@ -46,7 +46,7 @@ class Pendulum(Node2D):
 
     def build(self) -> list[Scene]:
         self.position: Point = Point(self.pivot.x, self.pivot.y + self.length)
-        self.rotation = 90 * (math.pi / 180)
+        self.rotate(90)
         return [
             Spring(position=self.pivot, end=self.position, length=self.length),
             Mover(

@@ -1,7 +1,8 @@
-import contextlib
+import os
 
-with contextlib.redirect_stdout(None):
-    import pygame
+os.environ["PYGAME_HIDE_SUPPORT_PROMPT"] = "true"
+
+import pygame
 
 # Required so that we can safely import classes that use Pygame types.
 pygame.init()

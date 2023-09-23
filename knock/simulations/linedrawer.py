@@ -5,7 +5,7 @@ from depict import *
 
 
 @define
-class CursorLine(Point2D):
+class LineDrawer(Point2D):
     position: Point = Point(0, 0)
     color: Color = Blue
     line_started: bool = False
@@ -17,7 +17,7 @@ class CursorLine(Point2D):
             self.start_pos: Point = self.position
             self.line_started = True
             line = Line2D(
-                start=self.start_pos, end=Mouse.get_pos(), color=Color.random()
+                position=self.start_pos, end=Mouse.get_pos(), color=Color.random()
             )
             self.children.append(line)
         elif Mouse.is_pressed(MouseButton.Left) and self.line_started:

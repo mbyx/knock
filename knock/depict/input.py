@@ -2,12 +2,9 @@ from __future__ import annotations
 
 """Monitor and control input devices such as the keyboard and mouse."""
 
-import contextlib
 from enum import Enum
 
-with contextlib.redirect_stdout(None):
-    import pygame
-
+import pygame
 from attrs import astuple
 from depict.vec3d import Point
 

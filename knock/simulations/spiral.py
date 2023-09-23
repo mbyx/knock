@@ -10,11 +10,14 @@ class Spiral(Point2D):
 
     Requires clear=False to be set."""
 
-    radius: float = 100.0
-    offset: Point = Point(320, 180)
-    position: Point = Point(offset.x + radius, offset.y)
+    radius: float = 1.0
+    pivot: Point = Point(320, 180)
+    position: Point = Point(pivot.x + radius, pivot.y)
     color: Color = Color.random()
 
     def tick(self, delta: float, engine: Engine) -> None:
-        self.rotate(1)
+        direction: Vec3D = (self.position - self.pivot).normalize()
+        old_radius = direction * self.radius
         self.radius += 0.1
+        self.position = self.position + (direction * self.radius - old_radius)
+        self.rotate(1)

@@ -2,12 +2,11 @@ from __future__ import annotations
 
 """Miscellaneous methods too small for their own file."""
 
-import contextlib
+
 from enum import Enum
 from typing import TYPE_CHECKING
 
-with contextlib.redirect_stdout(None):
-    import pygame
+import pygame
 
 if TYPE_CHECKING:
     from depict.color import Color
