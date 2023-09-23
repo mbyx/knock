@@ -1,10 +1,12 @@
+import contextlib
 import operator
 from enum import IntFlag
 from functools import reduce
 
-import pygame
-from attrs import define
+with contextlib.redirect_stdout(None):
+    import pygame
 
+from attrs import define
 from depict.vec3d import Size
 
 

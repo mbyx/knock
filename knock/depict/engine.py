@@ -4,14 +4,16 @@ from collections import defaultdict
 
 """The main innards of depict."""
 
+import contextlib
 from typing import Type, TypeAlias
 
-import pygame
+with contextlib.redirect_stdout(None):
+    import pygame
+
+import depict.color as color
 import pygame_gui as pgui
 import vidmaker
 from attrs import Factory, astuple, define
-
-import depict.color as color
 from depict.canvas import Canvas
 from depict.color import Color
 from depict.misc import Event

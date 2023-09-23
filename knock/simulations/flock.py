@@ -6,9 +6,9 @@ import random
 from typing import cast
 
 from attrs import define
-from boid import Boid
 from depict import *
-from mover import Mover
+from simulations.boid import Boid
+from simulations.mover import Mover
 
 # TODO: Tweak the flocking parameters to make a better simulation.
 # TODO: Ideally allow hot reloading these parameters via sliders.

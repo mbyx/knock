@@ -6,8 +6,8 @@ from typing import cast
 
 from attrs import define
 from depict import *
-from flowfield import FlowField
-from mover import Mover
+from simulations.flowfield import FlowField
+from simulations.mover import Mover
 
 
 @define

@@ -1,4 +1,7 @@
-import pygame
+import contextlib
+
+with contextlib.redirect_stdout(None):
+    import pygame
 
 # Required so that we can safely import classes that use Pygame types.
 pygame.init()

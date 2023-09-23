@@ -6,7 +6,7 @@ from typing import Optional, cast
 
 from attrs import define
 from depict import *
-from mover import Mover
+from simulations.mover import Mover
 
 
 @define

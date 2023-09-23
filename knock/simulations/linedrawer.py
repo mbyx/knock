@@ -30,6 +30,3 @@ class CursorLine(Point2D):
                 del self.children[-1]
             except IndexError:
                 pass
-
-
-Engine(Size(640, 360), record=True).run(CursorLine())
