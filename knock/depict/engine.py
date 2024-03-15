@@ -29,17 +29,19 @@ class Engine:
 
     This is where you can modify the way depict scenes are run.
 
-    - size: The width and height of the window.
-    - title: The title of the window.
-    - background: The background color of the window. This is filled every
+    Attributes:
+    - `size`: The width and height of the window.
+    - `signals`: Messages sent to subscribed nodes when something happens.
+    - `title`: The title of the window.
+    - `background`: The background color of the window. This is filled every
         tick if `clear` is True.
-    - frame_rate: The number of ticks per second.
-    - root: The root scene that is drawn to the window.
-    - screen: A reference to the window that is created.
-    - frame_count: The number of frames that have passed since depict started.
-    - record: Whether to record the window or not. This has to be set when
+    - `frame_rate`: The number of ticks per second.
+    - `root`: The root scene that is drawn to the window.
+    - `screen`: A reference to the window that is created.
+    - `frame_count`: The number of frames that have passed since depict started.
+    - `record`: Whether to record the window or not. This has to be set when
         depict is first run. All subsequent changes will be ignored.
-    - clear: Whether to clear the window every tick or not."""
+    - `clear`: Whether to clear the window every tick or not."""
 
     size: Size
     # Signals are addressed by the Scene instance whose signal you want, and the signal
@@ -56,16 +58,13 @@ class Engine:
     record: bool = False
     clear: bool = True
 
-    def __attrs_post_init__(self):
-        pygame.init()
-
     @property
     def width(self) -> int:
-        return self.size.width
+        return self.screen.size.width
 
     @property
     def height(self) -> int:
-        return self.size.height
+        return self.screen.size.height
 
     def connect(
         self, callback: SignalCallback, emitter: Scene, signal: Type[Signal]

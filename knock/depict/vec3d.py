@@ -5,16 +5,50 @@ from __future__ import annotations
 import math
 from typing import Callable, Generic, TypeAlias, TypeVar, cast
 
-from attrs import define
-
 import depict.utils as utils
+from attrs import define
 
 T = TypeVar("T", float, int)
 
 
 @define
 class Vec3D(Generic[T]):
-    """A 3-dimensional vector, with an x, y, and z coordinate."""
+    """A 3-dimensional vector with x, y, and z coordinates.
+
+    Attributes:
+        `x`: The x-coordinate of the vector.
+        `y`: The y-coordinate of the vector.
+        `z`: The z-coordinate of the vector (default is 0.0).
+
+    Methods:
+        `scalar`: Create a vector with all components set to a scalar value.
+        `origin`: Return the vector pointing towards the origin (0, 0, 0).
+        `angle_between`: Calculate the angle between two vectors in radians.
+        `is_close`: Determine whether two vectors are close in value.
+        `rotate`: Rotate the vector around a point by a specified angle.
+        `map`: Map each component of the vector with a given function.
+        `abs_diff`: Find the absolute value of the difference between two vectors.
+        `as_2d`: Return a two-tuple representing the vector with the z-component stripped.
+        `angle_2d`: Calculate the angle of a vector in a 2D context.
+        `size`: Calculate the magnitude of the vector.
+        `size_sq`: Calculate the magnitude squared of the vector.
+        `normalize`: Calculate the unit vector pointing in the same direction.
+        `dot`: Calculate the dot product of two vectors.
+        `cross`: Calculate the cross product of two vectors.
+        `constrain_size`: Constrain the magnitude of the vector between specified bounds.
+        `constrain`: Constrain the components of the vector between specified bounds.
+
+    Operators:
+        `__add__`: Add the components of two vectors.
+        `__sub__`: Subtract the components of two vectors.
+        `__truediv__`: Divide the components of the vector by a scalar.
+        `__floordiv__`: Floor divide the components of the vector by a scalar.
+        `__mul__`: Multiply the components of the vector by a scalar.
+        `__rmul__`: Multiply the components of the vector by a scalar.
+
+    Note:
+        For efficiency, use `size_sq` instead of `size` when possible to minimize square root operations.
+    """
 
     x: T
     y: T
@@ -38,7 +72,10 @@ class Vec3D(Generic[T]):
         return math.acos(self.dot(other) / ((self.size_sq() * other.size_sq()) ** 0.5))
 
     def is_close(self, other: Vec3D) -> bool:
-        """Determine whether two vectors are close in value."""
+        """Determine whether two vectors are close in value.
+
+        This is essential when using floating point values, as they cannot
+        be properly compared."""
         return math.isclose(self.x, other.x) and math.isclose(self.x, other.x)
 
     def rotate(self, degrees: float, around: Point) -> Vec3D[float]:
@@ -69,14 +106,14 @@ class Vec3D(Generic[T]):
 
     def size(self) -> T:
         """Calculate the magnitude of a vector."""
-        return (self.x ** 2 + self.y ** 2 + self.z ** 2) ** 0.5
+        return (self.x**2 + self.y**2 + self.z**2) ** 0.5
 
     def size_sq(self) -> T:
         """Calculate the magnitude squared of a vector.
 
         This method is supposed to be used to minimize the number of square root
         operations, as they are very slow."""
-        return self.x ** 2 + self.y ** 2 + self.z ** 2
+        return self.x**2 + self.y**2 + self.z**2
 
     def normalize(self) -> Vec3D[T]:
         """Calculate the unit vector that points in the same direction as the vector."""

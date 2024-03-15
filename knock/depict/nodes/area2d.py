@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from attrs import Factory, define
-
 from depict.engine import Engine
 from depict.nodes import Node2D
 from depict.signal import Signal

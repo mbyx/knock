@@ -45,8 +45,8 @@ class Line2D(Node2D):
     width: int = 1
 
     def draw(self, canvas: Canvas) -> None:
-        self.start = self.position
-        canvas.line(self.start, self.end, self.color, self.width)
+        self.position = self.start
+        canvas.line(self.position, self.end, self.color, self.width)
 
 
 @define

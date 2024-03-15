@@ -1,8 +1,7 @@
 from __future__ import annotations
 
-from attrs import Factory, define
-
 import depict.utils as utils
+from attrs import Factory, define
 from depict.scene import Scene
 from depict.vec3d import Vec3D
 

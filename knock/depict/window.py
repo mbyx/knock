@@ -8,7 +8,19 @@ from depict.vec3d import Size
 
 
 class Flag(IntFlag):
-    """Customizes how the window will be rendered."""
+    """Options to tailor window rendering in depict.
+
+    Configure the rendering behavior with the following options:
+    - FullScreen: Display in fullscreen mode.
+    - DoubleBuffer: Enable double-buffered rendering.
+    - HardwareSurface: Utilize hardware-accelerated surfaces.
+    - OpenGL: Create a window with an OpenGL context.
+    - Resizable: Allow the window to be resized by the user.
+    - NoFrame: Create a borderless window with no frame.
+    - Scaled: Enable scaling support for the window.
+    - Shown: Make the window initially visible.
+    - Hidden: Create the window initially hidden.
+    """
 
     FullScreen = pygame.FULLSCREEN
     DoubleBuffer = pygame.DOUBLEBUF
@@ -23,7 +35,25 @@ class Flag(IntFlag):
 
 @define
 class Window:
-    """The main window for drawing."""
+    """Main window for rendering and drawing.
+
+    Attributes:
+        `surface`: The drawing surface of the window.
+        `size`: The initial size of the window.
+        `flags`: A list of rendering flags to customize the window.
+
+    Methods:
+        `tick`: Update the display with new data.
+        `is_active`: Check whether the window is currently active.
+        `toggle_fullscreen`: Toggle fullscreen mode for this window.
+        `set_icon`: Set the icon for this window.
+        `set_title`: Set the title for this window.
+        `get_size`: Retrieve the current size of the window.
+
+    Note:
+        The `size` attribute stores the initial size of the window. If the window
+        is resized during runtime, use the `get_size` method to obtain the current size.
+    """
 
     surface: pygame.surface.Surface | None = None
     size: Size = Size(640, 360)
@@ -37,28 +67,20 @@ class Window:
         )
 
     def tick(self) -> None:
-        """Update the display with new data."""
         pygame.display.flip()
 
     def is_active(self) -> bool:
-        """Determine whether the window is active."""
         return pygame.display.get_active()
 
     def toggle_fullscreen(self) -> None:
-        """Turn fullscreen on and off for this window."""
         pygame.display.toggle_fullscreen()
+        self.size = Size(*pygame.display.get_window_size())
 
     def set_icon(self, surface: pygame.Surface) -> None:
-        """Set the icon of this window."""
         pygame.display.set_icon(surface)
 
     def set_title(self, title: str) -> None:
-        """Set the title for this window."""
         pygame.display.set_caption(title)
 
     def get_size(self) -> Size:
-        """Get the current size of this window.
-
-        If the window was resized, this will return the new size of the window.
-        However `Window.size` will store the initial size of the window."""
         return Size(*pygame.display.get_window_size())

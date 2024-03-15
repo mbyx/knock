@@ -5,7 +5,7 @@ import simulations
 import typer
 
 # TODO: Make a manual for Depict.
-# TODO: Fix fractal_tree and flock.
+# TODO: Fix simulations.
 
 app = typer.Typer()
 
@@ -17,9 +17,15 @@ simulations: dict[str, object] = {
 
 
 @app.command()
-def run(simulation_name: str, record: bool = False, clear: bool = True):
+def run(
+    simulation_name: str,
+    record: bool = False,
+    clear: bool = True,
+    width: int = 640,
+    height: int = 360,
+):
     print(f"Running {simulation_name}...")
-    depict.Engine(depict.Size(640, 360), record=record, clear=clear).run(
+    depict.Engine(depict.Size(width, height), record=record, clear=clear).run(
         simulations[simulation_name]()
     )
 

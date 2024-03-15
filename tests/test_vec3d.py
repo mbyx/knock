@@ -1,7 +1,8 @@
 import math
 
 from attrs import astuple
-from depict.vec3d import Size, Vec3D, deg2rad, rad2deg
+
+from knock.depict.vec3d import Size, Vec3D, deg2rad, rad2deg
 
 
 def test_deg2rad() -> None:

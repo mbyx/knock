@@ -8,6 +8,7 @@ from simulations.linedrawer import LineDrawer
 from simulations.liquid import Liquid
 from simulations.momenta import Momenta
 from simulations.mover import Mover
+from simulations.orbits import Orbit
 from simulations.particle_emitter import Particle, ParticleEmitter
 from simulations.pendulum import Pendulum, Spring
 from simulations.planet import Planet
@@ -32,4 +33,5 @@ __all__ = [
     "Planet",
     "Spinner",
     "Spiral",
+    "Orbit",
 ]

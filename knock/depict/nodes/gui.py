@@ -2,11 +2,10 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Callable
 
+import depict.color as color
 import pygame
 import pygame_gui as pgui
 from attrs import define
-
-import depict.color as color
 from depict.color import Color
 from depict.engine import MANAGER
 from depict.misc import Font
@@ -16,8 +15,7 @@ if TYPE_CHECKING:
     from depict.canvas import Canvas
 
 
-# TODO: This is very experiemental and will most definitely be buggy.
-# Ironically, this is the first node I ever added.
+# TODO: This is very experimental and will most definitely be buggy.
 @define
 class Label(Node2D):
     """A label with text in it."""

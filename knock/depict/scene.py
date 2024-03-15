@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 
 @define
 class Scene:
-    """The most basic and barebones object in depict.
+    """The smallest unit for logic in depict.
 
     This object can have a tag that must be unique at the same nesting
     level. It can also have children and can be a part of multiple groups.
@@ -31,7 +31,9 @@ class Scene:
             self.tag = self.__class__.__name__
 
     def world(self) -> list[Scene]:
-        """Get every single node in a scene, no matter how deeply nested."""
+        """Get every single node in a scene, no matter how deeply nested.
+
+        This method is recursive, and it is preferred that it is not used."""
         nodes: list[Scene] = []
         for child in self.children:
             if child.children != []:
@@ -66,6 +68,7 @@ class Scene:
         return nodes
 
     def build(self) -> list[Scene]:
+        # TODO: Combine build and ready methods into one.
         """Build the children to be attached to the node."""
         return self.children
 
