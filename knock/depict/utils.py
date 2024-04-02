@@ -1,7 +1,16 @@
+import functools
 import math
 from typing import TypeVar
 
+from attr import define
+
 T = TypeVar("T", float, int)
+
+
+def node(cls):
+    """Define a node that can have signals attached to it."""
+    cls.__hash__ = object.__hash__
+    return define(cls, eq=False)
 
 
 def map(n: T, old_min: T, old_max: T, new_min: T, new_max: T) -> float:
