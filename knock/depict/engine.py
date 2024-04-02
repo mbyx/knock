@@ -57,6 +57,7 @@ class Engine:
     frame_count: int = 0
     record: bool = False
     clear: bool = True
+    running: bool = True
 
     @property
     def width(self) -> int:
@@ -74,6 +75,15 @@ class Engine:
             self.signals[emitter][signal].append(callback)
         except:
             self.signals[emitter] = {signal: [callback]}
+
+    def stop(self) -> None:
+        self.running = False
+
+    def start(self) -> None:
+        self.running = True
+
+    def toggle(self) -> None:
+        self.running = not self.running
 
     def run(self, scene: Scene) -> None:
         """Start the depict event loop.
@@ -128,7 +138,7 @@ class Engine:
         # Run the event loop indefinitely.
         clock: Clock = Clock()
         try:
-            while True:
+            while self.running:
                 # Save the time elapsed since `tick` was called, and increment `frame_count`.
                 delta: float = clock.tick(self.frame_rate) / 1000.0
                 self.frame_count += 1
